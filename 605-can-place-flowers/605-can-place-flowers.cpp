@@ -15,6 +15,8 @@ public:
                     flr++,ptr++;
                  ptr++;
             }
+            if(flr==n)
+                return true;
         }
         return flr>=n;
         
