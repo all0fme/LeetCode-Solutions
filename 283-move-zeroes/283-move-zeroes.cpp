@@ -8,9 +8,7 @@ public:
                 int ptr=i;
                 while(ptr>0 && nums[ptr-1]==0)
                     ptr--;
-                int temp = nums[ptr];
-                nums[ptr] = nums[i];
-                nums[i]= temp;
+                swap(nums[ptr], nums[i]);
                 
                 
             }
