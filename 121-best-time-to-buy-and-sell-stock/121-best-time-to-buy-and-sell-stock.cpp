@@ -7,13 +7,12 @@ public:
         
         for(int i=0;i<prices.size();i++)
         {
-            if(prices[i]<min_so_far)
-            {
-                min_so_far = prices[i];
-            }
-            else{
+            
+                min_so_far = min(prices[i],min_so_far);
+            
+           
                 ans =  max(ans,prices[i]-min_so_far);
-            }
+            
         }
         return ans;
         
