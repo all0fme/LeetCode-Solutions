@@ -16,7 +16,7 @@ public:
     int findCircleNum(vector<vector<int>>& isConnected) {
         
         int cc=0;
-        vector<int> vis(201,0);
+        vector<int> vis(isConnected.size(),0);
         
         for(int i=0;i<isConnected.size();i++)
         {
