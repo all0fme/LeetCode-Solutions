@@ -1,37 +1,15 @@
 class Solution {
 public:
     int maxProduct(vector<string>& words) {
-        int n= words.size();
-        
-        vector<vector<int>> mp(n,vector<int>(26,0));
-        
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<words[i].size();j++)
-            {
-                mp[i][words[i][j]-'a']++;
-            }
-        }
-        unsigned long mx =0;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=i+1;j<n;j++)
-            {
-                int k=0;
-                for(;k<26;k++)
-                {
-                    if(mp[i][k]>0 && mp[j][k]>0 )
-                    {
-                        break;
-                    }
-                }
-                if(k==26)
-                {
-                    mx = max(mx,words[i].size()*words[j].size());
-                }
-            }
-        }
-        return mx;
-        
-    }
+	int n = size(words), ans = 0;
+	vector<int> mask(n);
+	for(int i = 0; i < n; i++) {
+		for(auto& ch : words[i])           
+			mask[i] |= 1 << (ch - 'a');     // hash the word
+		for(int j = 0; j < i; j++)
+			if((mask[i] & mask[j]) == 0)    // no common set bit in the hash of words[i] and words[j]
+				ans = max(ans, int(size(words[i]) * size(words[j])));
+	}   
+	return ans;
+}
 };
