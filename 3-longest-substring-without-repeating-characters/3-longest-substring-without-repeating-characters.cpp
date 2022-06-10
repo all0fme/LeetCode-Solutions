@@ -2,7 +2,7 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
        // cout<<s[0]<<"\n";
-        vector<int> a(256,0);
+        vector<int> a(128,0);
         int len =0;
        int i=0,j = 0;
         int n = s.size();
