@@ -14,7 +14,7 @@ public:
         
         for(int i=0;i<26;i++)
             mp[freq[i]]++;
-        sort(freq.begin(),freq.end());
+        sort(freq.begin(),freq.end(),greater<int>());
         for(auto x: freq)
         {
             if(mp[x]>1)
