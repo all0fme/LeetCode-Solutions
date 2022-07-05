@@ -10,8 +10,9 @@ public:
         {
             mp[nums[i]]++;
         }
-        for(int x:nums)
+        for(auto k: mp)
         {
+            int x = k.first;
             if(mp.find(x-1)==mp.end())
             {
                 int curnum =x;
