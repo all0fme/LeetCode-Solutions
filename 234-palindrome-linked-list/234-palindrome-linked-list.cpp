@@ -30,7 +30,7 @@ public:
         }
         slow = prev;
         fast = head;
-        while(slow && fast)
+        while(slow)
         {
             if(slow->val != fast->val)
                 return false;
