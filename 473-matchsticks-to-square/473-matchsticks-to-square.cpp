@@ -15,7 +15,7 @@ public:
 		{
 			//now as we chosen the current i'th element so set the i'th bit to zero, and the way to do is mask^(1<<i)
 			if (dfs(nums, i+1, sum+nums[i],mask^(1<<i), target, k))
-				return true;
+				return dp[k][mask]=true;
 		}
 	}
 	return dp[k][mask]=false;//store the value 
