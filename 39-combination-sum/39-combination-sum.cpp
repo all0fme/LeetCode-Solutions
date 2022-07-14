@@ -1,32 +1,34 @@
 class Solution {
 public:
     
-    void solve(set<vector<int>> &ans, vector<int>& candidates, int target,vector<int>& temp, int i,int sum)
+    void solve(vector<vector<int>> &ans, vector<int>& candidates, int target,vector<int>& temp, int i,int sum)
     {
         if(sum>target)
             return;
         if(sum==target)
         {
-             ans.insert(temp);
-            temp;
+             ans.push_back(temp);
+            return;
         }
             
             
         if(i==candidates.size() )
             return;
-        
+          //don't take
+        solve(ans,candidates,target,temp,i+1,sum);
         //take
         temp.push_back(candidates[i]);
         
         solve(ans,candidates,target,temp,i,sum+candidates[i]);
        
         temp.pop_back();
-        
-        //don't take
-        solve(ans,candidates,target,temp,i+1,sum);
+           
+      
     }
+        
+     
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        set<vector<int>> ans;
+        vector<vector<int>> ans;
         vector<int> temp;
         
         
