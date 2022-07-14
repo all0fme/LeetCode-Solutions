@@ -14,14 +14,17 @@ public:
             
         if(i==candidates.size() )
             return;
-          //don't take
-        solve(ans,candidates,target,temp,i+1,sum);
-        //take
-        temp.push_back(candidates[i]);
         
-        solve(ans,candidates,target,temp,i,sum+candidates[i]);
+        //take
+        for(int x = i;x<candidates.size();x++)
+        {
+            temp.push_back(candidates[x]);
+        
+        solve(ans,candidates,target,temp,x,sum+candidates[x]);
        
         temp.pop_back();
+        }
+        
            
       
     }
