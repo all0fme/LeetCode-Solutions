@@ -9,12 +9,13 @@ public:
             return;
         }
         
-        //don't take
-        solve(ans,nums,temp,i+1);
+        
         //take
         temp.push_back(nums[i]);
         solve(ans,nums,temp,i+1);
         temp.pop_back();
+        //don't take
+        solve(ans,nums,temp,i+1);
         
         
         
@@ -23,7 +24,21 @@ public:
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> ans;
         vector<int> temp;
-        solve(ans,nums,temp,0);
+        
+        int n = nums.size();
+        int x = (1<<n);
+        for(int j=0;j<(x);j++)
+        {
+            temp.clear();
+            int mask = j;
+            
+            for(int i=0;i<n;i++)
+            {
+                if(mask&(1<<i))
+                    temp.push_back(nums[i]);
+            }
+            ans.push_back(temp);
+        }
         return ans;
     }
 };
