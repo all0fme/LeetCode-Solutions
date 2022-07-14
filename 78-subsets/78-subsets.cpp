@@ -8,13 +8,15 @@ public:
             ans.push_back(temp);
             return;
         }
+        
+        //don't take
+        solve(ans,nums,temp,i+1);
         //take
         temp.push_back(nums[i]);
         solve(ans,nums,temp,i+1);
         temp.pop_back();
         
-        //don't take
-        solve(ans,nums,temp,i+1);
+        
         
         
     }
