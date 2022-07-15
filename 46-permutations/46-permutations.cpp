@@ -2,32 +2,30 @@ class Solution {
 public:
     
     vector<vector<int>> ans;
-    vector<int> temp;
-    bitset<10> vis;
     
-    void solve(int n,vector<int>& nums)
+   
+    
+    void solve(int n,vector<int>& nums,int ind)
     {
-        if(temp.size()==n)
+        if(ind==n)
         {
-            ans.push_back(temp);
+            ans.push_back(nums);
             return;
         }
         
-        for(int i=1;i<=n;i++)
+        for(int i=ind;i<n;i++)
         {
-            if(!vis[i])
-            {
-                vis[i]=1;
-                temp.push_back(nums[i-1]);
-                solve(n,nums);
-                temp.pop_back();
-                vis[i]=0;
+                swap(nums[ind],nums[i]);
+                solve(n,nums,ind+1);
+                swap(nums[ind],nums[i]);
                 
-            }
+                
+                
+            
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
-        solve(nums.size(),nums);
+        solve(nums.size(),nums,0);
         return ans;
     }
 };
