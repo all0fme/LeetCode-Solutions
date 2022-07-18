@@ -19,7 +19,7 @@ public:
         int rh = height(root->right);
         
         if(abs(lh-rh)>1)
-            ans&=false;
+            ans=false;
         return 1 + max(lh,rh);
             
     }
