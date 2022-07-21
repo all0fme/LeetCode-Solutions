@@ -37,9 +37,7 @@ public:
         {
             Node * temp = q.front();
             q.pop();
-            if(vis[temp])
-                continue;
-            vis[temp] = true;
+            
             if(mp.find(temp)==mp.end())
             {
                  mp[temp] = new Node(temp->val);
@@ -52,11 +50,12 @@ public:
                 {
                     Node* tempChild = new Node(child->val);
                     mp[child] = tempChild;
+                     q.push(child);
                     
                 }
                 mp[temp]->neighbors.push_back(mp[child]);
-                if(!vis[child])
-                q.push(child);
+               
+               
             }
         }
         return mp[node];
