@@ -1,6 +1,7 @@
 class Solution {
 public:
-    struct myComp{
+    class myComp{
+        public:
          bool operator ()(const pair<int,string>&a,const pair<int,string>&b){
          
         return a.first>b.first || (a.first==b.first && a.second<b.second);
