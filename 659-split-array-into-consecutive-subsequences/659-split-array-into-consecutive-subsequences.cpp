@@ -16,20 +16,18 @@ public:
                 fm[x]--;
                 hm[x+1]++;
             }
-            else
+            else if(fm[x]>0 && fm[x+1]>0 && fm[x+2]>0)
             {
                 fm[x]--;
                 fm[x+1]--;
                 fm[x+2]--;
                 hm[x+3]++;
             }
+            else
+                return false;
             
         }
-        for(auto x : fm)
-        {
-            if(x.second!=0)
-                return false;
-        }
+        
         return true;
     }
 };
