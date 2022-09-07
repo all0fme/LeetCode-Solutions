@@ -12,10 +12,10 @@
 class Solution {
 public:
     string s;
-    string tree2str(TreeNode* root) {
+    void tree2strr(TreeNode* root) {
         
         if(!root)
-            return s;
+            return;
         
         s+=to_string(root->val);
         if(root->right)
@@ -38,6 +38,13 @@ public:
             }
            
         }
+       
+        
+    }
+    string tree2str(TreeNode* root) {
+        
+      tree2strr(root);
+        
         return s;
         
     }
