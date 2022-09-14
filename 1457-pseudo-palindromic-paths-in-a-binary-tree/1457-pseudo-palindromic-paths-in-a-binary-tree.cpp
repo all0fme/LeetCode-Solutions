@@ -11,8 +11,8 @@
  */
 class Solution {
 public:
-    int ans=0;
-    void solve(TreeNode* root, unordered_map<int,int> &mp, int ev, int od){
+    //int ans=0;
+    int solve(TreeNode* root, unordered_map<int,int> &mp, int ev, int od){
         
         if(!root->right && !root->left)
         {
@@ -32,8 +32,8 @@ public:
                 }
             }
             if(od<=1)
-                ans++;
-            return;
+                return 1;
+            return 0;
         }
         
        mp[root->val]++;
@@ -53,20 +53,22 @@ public:
                 ev++;
             }
         }
+        int ans=0;
         if(root->left)
         {
-            solve(root->left,mp,ev,od);
+            ans+=solve(root->left,mp,ev,od);
         }
         if(root->right)
-          solve(root->right,mp,ev,od);
+         ans+= solve(root->right,mp,ev,od);
         mp[root->val]--;
+        return ans;
         
     }
     int pseudoPalindromicPaths (TreeNode* root) {
         if(!root)
             return 0;
         unordered_map<int,int> mp;
-        solve(root,mp, 0,0);
-        return ans;
+        return solve(root,mp, 0,0);
+        
     }
 };
