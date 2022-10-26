@@ -2,27 +2,27 @@ class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
         int n = nums.size();
-        vector<int>remainderPrefixSum(n,0);
+        //vector<int>remainderPrefixSum(n,0);
+        int prev;
         unordered_map<int,int>mp;
+         mp[0] = -1;
+        prev = nums[0]%k;
+        if(prev!=0)
+            mp[prev] =0;
         
-        remainderPrefixSum[0] = nums[0]%k;
-        
+       
+       
         for(int i=1;i<n;i++)
         {
-            remainderPrefixSum[i] = (remainderPrefixSum[i-1] + nums[i])%k;
-        }
-        mp[0] = -1;
-        for(int i=0;i<n;i++)
-        {
-            
-            if(mp.find(remainderPrefixSum[i])!=mp.end())
+            prev = (prev + nums[i])%k;
+            if(mp.find(prev)!=mp.end())
             {
-                if(i-mp[remainderPrefixSum[i]]>=2)
+                if(i-mp[prev]>=2)
                  return true;
             }
                
             else
-                mp[remainderPrefixSum[i]]=i;
+                mp[prev]=i;
         }
         return false;
     }
