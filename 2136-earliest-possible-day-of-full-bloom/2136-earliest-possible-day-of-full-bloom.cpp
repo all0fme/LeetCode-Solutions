@@ -8,7 +8,7 @@ public:
         {
             vec[i] = {growTime[i],plantTime[i]};
         }
-        sort(vec.begin(),vec.end(),[&] (const pair<int,int> a, const pair<int,int> b){ if(a.first==b.first) return b.second>a.second;
+        sort(vec.begin(),vec.end(),[&] (const pair<int,int> a, const pair<int,int> b){
                                       return a.first>b.first           ;                                    });
         int prevDay =0;
         int maxBloom = 0;
