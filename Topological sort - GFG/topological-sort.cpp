@@ -8,8 +8,9 @@ class Solution
 	public:
 	vector<int> indeg;
 	vector<int> topo;
+	vector<int> vis;
 	
-	void findTopoSort(vector<int> adj[])
+	void findTopoSortbfs(vector<int> adj[])
 	{
 	    queue<int> q;
 	    
@@ -32,17 +33,36 @@ class Solution
 	    }
 	    
 	}
-	vector<int> topoSort(int V, vector<int> adj[]) 
+	
+	void findTopoSortdfs(vector<int> adj[],int node)
 	{
-	    indeg.resize(V,0);
-	    for(int i=0;i<V;i++)
+	    vis[node] =1;
+	    for(int child: adj[node])
 	    {
-	        for(int x: adj[i])
+	        if(!vis[child])
 	        {
-	            indeg[x]++;
+	            findTopoSortdfs(adj,child);
 	        }
 	    }
-	    findTopoSort(adj);
+	    topo.push_back(node);
+	}
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    vis.resize(V,0);
+	   // indeg.resize(V,0);
+	   // for(int i=0;i<V;i++)
+	   // {
+	   //     for(int x: adj[i])
+	   //     {
+	   //         indeg[x]++;
+	   //     }
+	   // }
+	    for(int i=0;i<V;i++)
+	    {
+	      if(!vis[i])
+	      findTopoSortdfs(adj,i);
+	    }
+	   reverse(topo.begin(),topo.end());
 	    return topo;
 	}
 };
