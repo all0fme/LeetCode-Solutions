@@ -42,7 +42,8 @@ class Solution
             dp[i][j]=-1;
         }
 
-       return solve(W,wt,val,n,0);
+       solve(W,wt,val,n,0);
+       return dp[W][0];
     }
 };
 
